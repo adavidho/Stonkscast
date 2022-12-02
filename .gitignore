@@ -1,0 +1,10 @@
+*.md
+LICENSE
+__pycache__
+.env
+*.csv
+*.cfg
+Lib
+Include
+Scripts
+share
