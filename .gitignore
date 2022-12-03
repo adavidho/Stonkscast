@@ -9,3 +9,4 @@ Include
 Scripts
 share
 *.json
+.ipynb_checkpoints
