@@ -1,30 +1,39 @@
 from django.db import models
+import pandas as pd
 
 # Create your models here.
 class Inference(models.Model):
     stock_name = models.CharField(max_length=20)
-    market = models.CharField(max_length=20)
+    # market = models.CharField(max_length=20, default=None)
+    wsb_rel = models.FloatField(default=None)
     logo = models.CharField(max_length=200, default=None)
-    score = models.IntegerField()
+    score = models.IntegerField(default=None)
+    # mcap  = models.IntegerField(default=None)
+    # kgv = models.FloatField(default=None)
 
     def __str__(self) -> str:
         return f"""
         Stock name: {self.stock_name} 
-        Market: {self.market}
         Score: {self.score}
-        Logo: {self.logo}
         """
 
     def top_stocks(self) -> dict:
-        return [vars(o) for o in Inference.objects.order_by('-score')]
+        """Returns all Meeme Stocks with a positive classification, but at least 6."""
 
+        return [vars(o) for i,o in enumerate(Inference.objects.order_by('-score')) if i<6 or vars(o)['score']>70]
 
-# Import CSV to model
-# df = pd.read_csv("stock_data.csv")[['market', 'logo_url', 'ticker']].dropna()
-# for i in range(10):
-#     Inference(
-#         stock_name=df.iloc[i].ticker,
-#         market=df.iloc[i].market,
-#         logo=df.iloc[i].logo_url,
-#         score=df.iloc[i].score,
-#     ).save()
+    def update_model(self, data_path='D:\Documents\DHBW\Semester 3\Fallstudie\Data\AI_Data\inference_set.csv') -> None:
+        """Removes all model datapoints and loads new data from the specified path."""
+
+        Inference.objects.all().delete()
+        df = pd.read_csv(data_path)
+        for i in range(len(df)):
+            Inference(
+                stock_name=df.iloc[i].ticker,
+                # market=df.iloc[i].market,
+                wsb_rel= round(df.iloc[i].WSB_relevance_gain_percent,2),
+                logo=df.iloc[i].logoURL,
+                score=int(df.iloc[i].prediction*100),
+                # mcap=df.iloc[i].MCAP,
+                # kgv=df.iloc[i].forwardPE
+            ).save()
