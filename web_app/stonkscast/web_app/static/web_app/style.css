@@ -1,4 +1,4 @@
-shtml {
+html {
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
@@ -111,4 +111,21 @@ body {
     height: 30px;
     width: 125px;
     opacity: 1;
+}
+
+@media only screen and (max-width: 500px){
+    .content-wrapper {
+        margin-top: 40px;
+        margin-right: 5vw;
+    }
+
+    .content-wrapper .card {
+        margin: 10px 0px 60px 0px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 380px){
+    .content-wrapper h1 {
+        font-size: 55px;
+    }
 }
