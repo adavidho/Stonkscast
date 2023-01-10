@@ -22,11 +22,11 @@ class Inference(models.Model):
 
         return [vars(o) for i,o in enumerate(Inference.objects.order_by('-score')) if i<6 or vars(o)['score']>70]
 
-    def update_model(self, data_path='D:\Documents\DHBW\Semester 3\Fallstudie\Data\AI_Data\inference_set.csv') -> None:
+    def update_model(self, data_path='D:\Documents\DHBW\Semester 3\Fallstudie\Data\AI_Data\data_ausgefüllt.csv') -> None:
         """Removes all model datapoints and loads new data from the specified path."""
 
         Inference.objects.all().delete()
-        df = pd.read_csv(data_path)
+        df = pd.read_csv(data_path, sep=";")
         for i in range(len(df)):
             Inference(
                 stock_name=df.iloc[i].ticker,
