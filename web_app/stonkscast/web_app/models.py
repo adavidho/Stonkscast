@@ -9,9 +9,9 @@ class Inference(models.Model):
     wsb_rel = models.FloatField(default=None)
     logo = models.CharField(max_length=200, default=None)
     score = models.IntegerField(default=None)
-    # mcap  = models.IntegerField(default=None)
-    # gross_margins = models.FloatField(default=None)
-    # kgv = models.FloatField(default=None)
+    mcap  = models.IntegerField(null=True)
+    gross_margins = models.FloatField(null=True)
+    kgv = models.FloatField(null=True)
 
     def __str__(self) -> str:
         return f"""
@@ -37,7 +37,7 @@ class Inference(models.Model):
                 wsb_rel= round(df.iloc[i].WSB_relevance_gain_percent,2),
                 logo=df.iloc[i].logoURL,
                 score=int(df.iloc[i].prediction*100),
-                # mcap=df.iloc[i].MCAP,
-                # kgv=df.iloc[i].forwardPE,
-                # gross_margins=df.iloc[i].grossMargins,
+                mcap=float(df.iloc[i].MCAP.replace(",",".")),
+                kgv=df.iloc[i].forwardPE,
+                gross_margins=df.iloc[i].grossMargins,
             ).save()
