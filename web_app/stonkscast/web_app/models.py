@@ -4,11 +4,13 @@ import pandas as pd
 # Create your models here.
 class Inference(models.Model):
     stock_name = models.CharField(max_length=20)
+    long_name = models.CharField(max_length=30, default=None)
     # market = models.CharField(max_length=20, default=None)
     wsb_rel = models.FloatField(default=None)
     logo = models.CharField(max_length=200, default=None)
     score = models.IntegerField(default=None)
     # mcap  = models.IntegerField(default=None)
+    # gross_margins = models.FloatField(default=None)
     # kgv = models.FloatField(default=None)
 
     def __str__(self) -> str:
@@ -30,10 +32,12 @@ class Inference(models.Model):
         for i in range(len(df)):
             Inference(
                 stock_name=df.iloc[i].ticker,
+                long_name = df.iloc[i].longName,
                 # market=df.iloc[i].market,
                 wsb_rel= round(df.iloc[i].WSB_relevance_gain_percent,2),
                 logo=df.iloc[i].logoURL,
                 score=int(df.iloc[i].prediction*100),
                 # mcap=df.iloc[i].MCAP,
-                # kgv=df.iloc[i].forwardPE
+                # kgv=df.iloc[i].forwardPE,
+                # gross_margins=df.iloc[i].grossMargins,
             ).save()
