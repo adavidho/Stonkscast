@@ -13,6 +13,7 @@ def index(request):
     top_stocks = stocks.top_stocks()
     for stock in top_stocks:
         stock['price'] = round(si.get_live_price(stock['stock_name']), 1)
+        stock['mcap'] = str(round(stock['mcap']/1000000000, 2)) + " mrd. USD"
     context = {
         'top_stocks': top_stocks,  
     }
