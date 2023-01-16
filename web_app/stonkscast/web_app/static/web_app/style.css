@@ -1,7 +1,11 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-position-x: center;
+    background-repeat: repeat-y;
+    background-size: 100vw;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 body {
     overflow-x: hidden;
@@ -12,14 +16,15 @@ body {
 }
 
 header {
-    background-color: black;
-    width: 100%;
+    /* background-color: black; */
+    width: calc(100%-20px);
+    margin: 10px 10px;
     display: flex;
     justify-content: center;
-    box-shadow: 0px 0px 15px black;
+    /* box-shadow: 0px 0px 15px black; */
 }
 
-img {
+header img {
     width: 100%;
     max-width: 500px;
 }
@@ -34,20 +39,27 @@ img {
 .content-wrapper h1 {
     font-size: 70px;
     font-weight: 800;
+    color: white;
+    display: none;
 }
 
 .content-wrapper .cards {
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .content-wrapper .card {
     margin: 10px 60px 60px 0px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
     border-radius: 10px;
     width: 300px;
     position: relative;
+    background-color: rgba(36, 36, 36, 0.8);
+    color: white;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(7px);
 }
 
 .content-wrapper .card-content {
@@ -62,7 +74,7 @@ img {
     width: 42px;
     border-bottom-left-radius: 50%;
     border-top-right-radius: inherit;
-    background-color: black;
+    background-color: rgba(36, 36, 36, 1);
     color: white;
     transition: 0.3s;
     transition-timing-function: ease-in-out;
@@ -95,7 +107,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(104, 104, 104);
     border-top-right-radius: inherit;
     border-top-left-radius: inherit;
 }
@@ -105,6 +117,7 @@ img {
     max-height: 110px;
     max-width: 280px;
     width: auto;
+    border-radius: 3px;
 }
 
 
@@ -127,6 +140,11 @@ img {
     opacity: 1;
 }
 
+@media only screen and (max-width: 1000px){
+    html {
+        background-size: 340%;
+    }
+}
 @media only screen and (max-width: 500px){
     .content-wrapper {
         margin-top: 40px;
