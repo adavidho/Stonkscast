@@ -38,7 +38,8 @@ class Inference(models.Model):
         # Remove all datapoints from the database
         Inference.objects.all().delete()
         # Read new data from csv file in 'data_path
-        df = pd.read_csv(data_path, sep=";")
+        df = pd.read_csv(data_path, sep=';', skiprows=1)
+        df.dropna(subset=["prediction"])
         for i in range(len(df)):
             Inference(
                 stock_name=df.iloc[i].ticker,
