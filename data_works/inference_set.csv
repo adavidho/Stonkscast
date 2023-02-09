@@ -1,0 +1,26 @@
+label,prediction,shortName,longName,ticker,grossMargins,logoURL,forwardPE,MCAP,WSB_relevance_gain_percent
+False,0.13520193,,,RRC,,,,,0.0
+False,0.06278487,,,TSLX,,,,,0.0
+False,0.11577735,argenx SE,argenx SE,ARGX,-1.4481101,https://logo.clearbit.com/argenx.com,-38.851444,21627940864.0,0.0
+False,0.4365497,"Vivint Smart Home, Inc.","Vivint Smart Home, Inc.",VVNT,0.75753,https://logo.clearbit.com/vivint.com,-18.0,2535061248.0,0.0
+False,0.058354683,,,RXST,,,,,0.0
+False,0.028349478,,,COWNL,,,,,0.0
+True,0.84680533,,,CLF,,,,,-1.0
+False,0.05536044,,,MDLZ,,,,,0.0
+False,0.031133285,,,LMT,,,,,0.0
+False,0.1277348,,,MMAT,,,,,0.0
+False,0.7267566,JFrog Ltd.,JFrog Ltd.,FROG,0.77986,https://logo.clearbit.com/jfrog.com,257.65555,2325624832.0,0.0
+True,0.884947,,,PLTR,,,,,-0.288135593220339
+False,0.12742533,,,RRX,,,,,0.0
+False,0.4939113,,,ETW,,,,,0.0
+True,0.73745406,,,HOOD,,,,,∞
+False,0.78230023,,,DS,,,,,5.5
+False,0.047664393,,,ALLK,,,,,0.0
+False,0.04870707,,,RFP,,,,,0.0
+False,0.053667396,,,CNCE,,,,,0.0
+False,0.1277348,,,PBT,,,,,0.0
+False,0.028349478,,,AEFC,,,,,0.0
+True,0.7282329,,,UNIT,,,,,2.0
+False,0.058354683,,,SCAQ,,,,,0.0
+False,0.05536044,,,PRG,,,,,0.0
+False,0.0712853,,,MOS,,,,,0.0

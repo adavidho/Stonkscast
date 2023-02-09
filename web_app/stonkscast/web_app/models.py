@@ -19,6 +19,7 @@ class Inference(models.Model):
         Returns the string representation of a stock.
         Stock name and stock score.
         """
+        
         return f"Stock name: {self.stock_name} \nScore: {self.score}"
 
     def top_stocks(self) -> dict:
@@ -28,6 +29,7 @@ class Inference(models.Model):
         (a score between 70 and 100) are returned, if less then 6 stock have a 
         score higher than 70, also negativly classified stocks are returned.
         """
+
         return [vars(o) for i,o in enumerate(Inference.objects.order_by('-score')) if i<6 or vars(o)['score']>70]
 
     def update_model(self, data_path:str) -> None:
@@ -35,10 +37,11 @@ class Inference(models.Model):
         Removes all model datapoints from the database and loads 
         new data from a ';' seperated csv in the specified path.
         """
+
         # Remove all datapoints from the database
         Inference.objects.all().delete()
         # Read new data from csv file in 'data_path
-        df = pd.read_csv(data_path, sep=';', skiprows=1)
+        df = pd.read_csv(data_path, sep=';', skiprows=1) # Dataset containing predictions
         df.dropna(subset=["prediction"])
         for i in range(len(df)):
             Inference(

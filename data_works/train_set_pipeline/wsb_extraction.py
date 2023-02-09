@@ -1,5 +1,6 @@
 import pandas as pd
 
+# timeseries_1.csv contains the wsb subreddit post title
 df = pd.read_csv('./../timeseries_1.csv', index_col="date")
 df.drop(["word_count"], axis=1, inplace=True)
 
