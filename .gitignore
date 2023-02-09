@@ -7,6 +7,5 @@ Lib
 Include
 Scripts
 share
-*.json
 .ipynb_checkpoints
 xgboost
